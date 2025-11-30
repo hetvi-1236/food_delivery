@@ -1,14 +1,64 @@
 <!DOCTYPE html>
-<html>
-<head><title>Restaurants</title></head>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants - Food Delivery</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
 <body>
-    <h1>Restaurants</h1>
-    <ul>
-        {% for restaurant in restaurants %}
-            <li>
-                <a href="{% url 'dish_list' restaurant.id %}">{{ restaurant.name }}</a> - {{ restaurant.address }}
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="page-wrapper">
+        <nav class="navbar">
+            <div class="logo">FoodDelivery</div>
+            <div class="nav-links">
+                <span class="user-greeting">Hello, {{ request.user.username }}</span>
+                <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn-nav btn-logout">Logout</button>
+                </form>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header class="page-header">
+                <h1>Explore Restaurants</h1>
+                <p>Discover the best food in town, delivered to you.</p>
+
+                <div class="search-container">
+                    <form method="get" action="." class="search-form">
+                        <input type="text" name="q" placeholder="Search for restaurants or dishes..."
+                            value="{{ request.GET.q|default:'' }}">
+                        <button type="submit">🔍</button>
+                    </form>
+                </div>
+            </header>
+
+            <div class="restaurant-grid">
+                {% for restaurant in restaurants %}
+                <div class="restaurant-card">
+                    <div class="card-image">
+                        <div class="placeholder-icon">🍽️</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>{{ restaurant.name }}</h3>
+                        <p class="address">{{ restaurant.address }}</p>
+                        <a href="{% url 'dish_list' restaurant.id %}" class="btn-card">View Menu</a>
+                    </div>
+                </div>
+                {% empty %}
+                <p class="no-restaurants">No restaurants found matching your search.</p>
+                {% endfor %}
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Food Delivery. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
+
 </html>

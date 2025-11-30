@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery - Deliciousness Delivered</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="landing-wrapper">
+        <nav class="navbar">
+            <div class="logo">FoodDelivery</div>
+            <div class="nav-links">
+                <a href="{% url 'login' %}" class="btn-nav">Login</a>
+            </div>
+        </nav>
+
+        <header class="hero-section">
+            <div class="hero-content">
+                <h1>Delicious Food,<br>Delivered to You.</h1>
+                <p>Experience the best local restaurants at your fingertips. Fresh, fast, and fantastic.</p>
+                <a href="{% url 'login' %}" class="btn-cta">Get Started</a>
+            </div>
+            <div class="hero-image">
+                <!-- Placeholder for a hero image if needed, or just use CSS shapes/gradients -->
+                <div class="floating-card card-1">🍔</div>
+                <div class="floating-card card-2">🍕</div>
+                <div class="floating-card card-3">🥗</div>
+            </div>
+        </header>
+
+        <section class="features-section">
+            <div class="feature-card">
+                <div class="icon">🚀</div>
+                <h3>Fast Delivery</h3>
+                <p>Hot and fresh food delivered to your doorstep in minutes.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🥬</div>
+                <h3>Fresh Ingredients</h3>
+                <p>We partner with top-rated restaurants ensuring quality.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🎧</div>
+                <h3>24/7 Support</h3>
+                <p>Our team is here to help you anytime, day or night.</p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2025 Food Delivery. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
