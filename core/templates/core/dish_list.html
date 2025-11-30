@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>Dishes</title></head>
+<body>
+    <h1>Dishes</h1>
+    <ul>
+        {% for dish in dishes %}
+            <li>
+                {{ dish.name }} (Rs.{{ dish.price }}) -
+                <a href="{% url 'order_dish' dish.id %}">Order</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'restaurant_list' %}">Back to Restaurants</a>
+</body>
+</html>

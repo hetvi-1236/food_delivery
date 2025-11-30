@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head><title>Order Dish</title></head>
+<body>
+    <h1>Order {{ dish.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        Quantity: <input type="number" name="quantity" value="1" min="1" /><br>
+        <button type="submit">Order</button>
+    </form>
+    <a href="{% url 'dish_list' dish.restaurant.id %}">Back to Dishes</a>
+</body>
+</html>

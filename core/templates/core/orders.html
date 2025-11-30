@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Your Orders</title></head>
+<body>
+    <h1>Your Orders</h1>
+    <ul>
+        {% for order in orders %}
+            <li>
+                {{ order.dish.name }} ({{ order.quantity }}) - Ordered at {{ order.ordered_at }}
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'restaurant_list' %}">Order More</a>
+</body>
+</html>
